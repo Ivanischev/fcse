@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { LOGIN_MUTATION } from "../mutations/login";
+import { LOGIN_MUTATION } from "../graphql/mutations/login";
+import useAuth from "../hooks/useAuth";
 
 interface LoginResponse {
   login: {
@@ -28,7 +28,7 @@ function Login() {
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const loginUserHandler = async (
     e: React.FormEvent<HTMLButtonElement>
@@ -47,11 +47,9 @@ function Login() {
       });
 
       if (data) {
-        localStorage.setItem("token", data.login.jwt);
-        localStorage.setItem("userId", data.login.user.id);
+        login(data.login.jwt, data.login.user.id);
         setEmail("");
         setPassword("");
-        navigate("/Account");
       } else {
         setError("Prüfen Sie, ob Ihr Login und Ihr Passwort korrekt sind");
       }

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { GET_USER } from "../queries/account";
-import { useNavigate } from "react-router-dom";
+import { GET_USER } from "../graphql/queries/account";
+import useAuth from "../hooks/useAuth";
 
 interface User {
   firstName: string;
@@ -12,9 +12,7 @@ interface UserData {
 }
 
 function Account() {
-  const userToken = localStorage.getItem("token");
-  const userId = localStorage.getItem("userId");
-  const navigate = useNavigate();
+  const { userId, token, logout } = useAuth();
 
   const { data, loading, error } = useQuery<UserData, { id: string }>(
     GET_USER,
@@ -24,7 +22,7 @@ function Account() {
       },
       context: {
         headers: {
-          Authorization: `Bearer ${userToken}`,
+          Authorization: `Bearer ${token}`,
         },
       },
     }
@@ -32,12 +30,6 @@ function Account() {
 
   if (loading) return <p>Loading...</p>;
   if (error) console.log("GraphQL error:", error.message);
-
-  const logOutHandler = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    navigate("/Login");
-  };
 
   return (
     <>
@@ -50,7 +42,7 @@ function Account() {
         Lastname:
         <b> {data?.user.lastName}</b>
       </p>
-      <button onClick={() => logOutHandler()}>Log Out</button>
+      <button onClick={logout}>Log Out</button>
       {loading && <p>Loading...</p>}
     </>
   );

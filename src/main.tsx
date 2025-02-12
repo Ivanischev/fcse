@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { AuthProvider } from "./providers/AuthProvider";
 
 const client = new ApolloClient({
   uri: "https://cms.trial-task.k8s.ext.fcse.io/graphql",
@@ -13,7 +14,9 @@ const client = new ApolloClient({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ApolloProvider>
   </StrictMode>
 );
