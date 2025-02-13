@@ -3,10 +3,10 @@ import { useState } from "react";
 import { LOGIN_MUTATION } from "../../graphql/mutations/login";
 import useAuth from "../../hooks/useAuth";
 import styles from "./Login.module.css";
-import Button from "../../components/ui/Button/Button";
-import Input from "../../components/ui/Input/Input";
-import FormRow from "../../components/ui/FormRow/FormRow";
-import Text from "../../components/ui/Text/Text";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
+import FormRow from "../../components/ui/FormRow";
+import Text from "../../components/ui/Text";
 
 interface LoginResponse {
   login: {

@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "../../graphql/queries/account";
 import useAuth from "../../hooks/useAuth";
-import Container from "../../components/layout/Container/Container";
+import Container from "../../components/layout/Container";
 import styles from "./Account.module.css";
 
 interface User {

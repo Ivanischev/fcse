@@ -1,5 +1,5 @@
 import useAuth from "../../../hooks/useAuth";
-import Button from "../../ui/Button/Button";
+import Button from "../../ui/Button";
 import styles from "./Header.module.css";
 
 function Header() {
