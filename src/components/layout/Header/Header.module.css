@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  display: block;
+  height: 100%;
+  max-width: 240px;
+}

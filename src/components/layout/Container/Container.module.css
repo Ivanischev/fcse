@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.clear {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fluid {
+  max-width: 100%;
+}
+
+.narrow {
+  max-width: 1440px;
+}

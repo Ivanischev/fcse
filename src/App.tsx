@@ -1,17 +1,19 @@
-import "./App.css";
-import AppRouter from "./providers/AppRouter";
-import useAuth from "./hooks/useAuth";
+import Footer from "./components/layout/Footer/Footer";
+import Header from "./components/layout/Header/Header";
+import AppRouter from "./router/AppRouter";
 import { BrowserRouter } from "react-router-dom";
+import styles from "./components/layout/Layout.module.css";
 
 function App() {
-  const { token, logout } = useAuth();
   return (
     <BrowserRouter>
-      <header>
-        <h1>logo</h1>
-        {token && <button onClick={logout}>Logout</button>}
-      </header>
-      <AppRouter />
+      <div className={styles.app}>
+        <Header />
+        <div className={styles.contentWrapper}>
+          <AppRouter />
+        </div>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

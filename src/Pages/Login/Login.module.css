@@ -1,0 +1,17 @@
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.loginPage button {
+  margin-top: var(--unit-5);
+}
+
+.loginContainer {
+  max-width: 500px;
+  transform: translateY(-25px);
+}

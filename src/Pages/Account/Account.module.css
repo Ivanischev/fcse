@@ -1,0 +1,8 @@
+.content {
+  background-color: white;
+  margin-top: var(--unit-5);
+  margin-bottom: var(--unit-5);
+  padding: var(--unit-5);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}

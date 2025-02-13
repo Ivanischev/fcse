@@ -1,0 +1,10 @@
+.formRow {
+  margin-bottom: var(--unit-5);
+}
+
+.formRow__label {
+  display: block;
+  font-size: var(--font-m);
+  font-weight: 600;
+  margin-bottom: var(--unit-1);
+}
