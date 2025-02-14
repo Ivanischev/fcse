@@ -1,29 +1,17 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { LOGIN_MUTATION } from "../../graphql/mutations/login";
+import { LOGIN_MUTATION } from "../../graphql/mutations/login/login";
 import useAuth from "../../hooks/useAuth";
 import styles from "./Login.module.css";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import FormRow from "../../components/ui/FormRow";
 import Text from "../../components/ui/Text";
-
-interface LoginResponse {
-  login: {
-    jwt: string;
-    user: {
-      id: string;
-    };
-  };
-}
-
-interface LoginVariables {
-  input: {
-    identifier: string;
-    password: string;
-    provider: string;
-  };
-}
+import {
+  LoginResponse,
+  LoginVariables,
+} from "../../graphql/mutations/login/types";
+import Title from "../../components/ui/Title";
 
 function Login() {
   const [loginUser] = useMutation<LoginResponse, LoginVariables>(
@@ -67,12 +55,19 @@ function Login() {
     }
   };
 
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+  const handleChengePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginContainer}>
-        <h1>
+        <Title as="h1">
           Herzlich Willkommen <strong>"Meine Probeaufgabe"</strong>
-        </h1>
+        </Title>
         <form className={styles["login-form"]}>
           <FormRow label="E-mail">
             <Input
@@ -80,9 +75,7 @@ function Login() {
               placeholder="E-mail"
               className={styles.input}
               value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(e.target.value)
-              }
+              onChange={handleChangeEmail}
               required
             />
           </FormRow>
@@ -100,9 +93,7 @@ function Login() {
               placeholder="Passwort"
               className={styles.input}
               value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
+              onChange={handleChengePassword}
             />
           </FormRow>
 
@@ -112,12 +103,7 @@ function Login() {
             </Text>
           )}
 
-          <Button
-            fullWidth
-            onClick={(e: React.FormEvent<HTMLButtonElement>) =>
-              loginUserHandler(e)
-            }
-          >
+          <Button fullWidth onClick={loginUserHandler}>
             {loading ? "Loading..." : "Login"}
           </Button>
         </form>

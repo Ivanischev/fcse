@@ -8,16 +8,9 @@ body {
   background-color: var(--background);
 }
 
-h1 {
-  font-size: var(--font-l);
-  line-height: 1.3;
-  font-weight: 100;
-  margin-bottom: 16px;
-}
-
 .mb-3 {
-  margin-bottom: 12px;
+  margin-bottom: var(--unit-3);
 }
 .mb-4 {
-  margin-bottom: 16px;
+  margin-bottom: var(--unit-4);
 }
